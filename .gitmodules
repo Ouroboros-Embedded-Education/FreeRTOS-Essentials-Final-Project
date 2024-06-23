@@ -1,0 +1,6 @@
+[submodule "lib/FreeRTOS"]
+	path = lib/FreeRTOS
+	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
+[submodule "lib/eeprom"]
+	path = lib/eeprom
+	url = git@github.com:Pablo-Jean/eeprom.git
