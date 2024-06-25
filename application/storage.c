@@ -44,7 +44,7 @@ if (memAddress >= 256){
 		memAddress -= 256;
 	}
 	board_i2c_lock();
-	board_eeprom_write(i2cAddress, memAddress, memAddrSize, data, len, 100);
+	board_eeprom_write(i2cAddress, memAddress, memAddrSize, data, len);
 	board_i2c_unlock();
 
 	return EE_OK;
@@ -56,7 +56,7 @@ eeprom_e EE_Read(uint32_t i2cAddress, uint32_t memAddress, uint8_t memAddrSize, 
 		memAddress -= 256;
 	}
 	board_i2c_lock();
-	board_eeprom_read( i2cAddress, memAddress, memAddrSize, data, len, 100);
+	board_eeprom_read( i2cAddress, memAddress, memAddrSize, data, len);
 	board_i2c_unlock();
 
 	return EE_OK;
@@ -150,7 +150,7 @@ storage_err_e _send_cmd_to_gatekeeper(storage_t *storage, _storage_data_t *StoCm
  */
 
 void storage_start(storage_t *storage){
-	BaseType_t Err;
+	BaseType_t xErr;
 
 	BoardAssert(storage != NULL);
 
@@ -183,7 +183,7 @@ storage_err_e storage_read(storage_t *storage, uint32_t Addr, uint8_t *DatToRead
 	_storage_data_t StoData;
 
 	BoardAssert(storage != NULL);
-	BoardAssert(DatToWrite != NULL);
+	BoardAssert(DatToRead != NULL);
 	BoardAssert(Len <= EEPROM_SIZE);
 	BoardAssert((Addr+Len) <= EEPROM_SIZE);
 

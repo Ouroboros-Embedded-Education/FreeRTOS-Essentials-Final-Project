@@ -24,7 +24,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "board.h"
+#include "app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +57,16 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* Hooks */
 
+void vApplicationStackOverflowHook( TaskHandle_t xTask, char * pcTaskName ){
+	while (1){
+		board_led_set();
+		HAL_Delay(500);
+		board_led_reset();
+		HAL_Delay(250);
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,11 +101,12 @@ int main(void)
   MX_I2C3_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-
+  app_start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  vTaskStartScheduler();
   while (1)
   {
     /* USER CODE END WHILE */

@@ -63,7 +63,7 @@ void board_eeprom_write(uint32_t i2cAddress, uint32_t memAddress, uint8_t memAdd
 
 void board_led_set();
 
-void board_let_reset();
+void board_led_reset();
 
 /* Callback */
 

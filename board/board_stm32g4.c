@@ -10,6 +10,7 @@
 #include <stm32g4xx.h>
 #include "i2c.h"
 #include "gpio.h"
+#include "spi.h"
 
 /**
  * Privates
@@ -81,11 +82,11 @@ void board_clrc663_powerup(){
 }
 
 void board_clrc663_deselect(){
-	HAL_GPIO_WritePin(CLRC663_CS_GPIO_Port, CLRC663_CS_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(CLRC663_nCS_GPIO_Port, CLRC663_nCS_Pin, GPIO_PIN_SET);
 }
 
 void board_clrc663_select(){
-	HAL_GPIO_WritePin(CLRC663_CS_GPIO_Port, CLRC663_CS_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(CLRC663_nCS_GPIO_Port, CLRC663_nCS_Pin, GPIO_PIN_RESET);
 }
 
 void board_clrc663_txrx(uint8_t *tx, uint8_t *rx, uint32_t len){
@@ -111,6 +112,6 @@ void board_led_set(){
 	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 }
 
-void board_let_reset(){
+void board_led_reset(){
 	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 }
