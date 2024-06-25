@@ -637,7 +637,7 @@ PRIORITY THAN THIS! (higher priorities are lower numeric values. */
 
 #define vPortSVCHandler						SVC_Handler
 #define xPortPendSVHandler					PendSV_Handler
-#define xPortSysTickHandler					Systick_Handler
+#define xPortSysTickHandler					SysTick_Handler
 
 /******************************************************************************/
 /* Definitions that include or exclude functionality. *************************/
