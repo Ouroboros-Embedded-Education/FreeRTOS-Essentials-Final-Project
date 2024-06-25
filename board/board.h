@@ -67,6 +67,8 @@ void board_let_reset();
 
 /* Callback */
 
-void board_gpio_callback(uint32_t GPIO_Pin);
+void board_btn_sel_callback();
+
+void board_btn_enter_callback();
 
 #endif /* BOARD_H_ */
